@@ -57,7 +57,7 @@ jobs:
       uses: docker/build-push-action@v5
       with:
        context: .
-       target: test
+       target: production
        load: true
 
     - name: Build and Push
