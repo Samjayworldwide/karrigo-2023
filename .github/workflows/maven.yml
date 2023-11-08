@@ -50,22 +50,11 @@ jobs:
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
 
-    - name: setup build x
-      uses: docker/setup-buildx-action@v3
-
-    - name: Build and Test
-      uses: docker/build-push-action@v5
-      with:
-       context: .
-       target: production
-       load: true
-
     - name: Build and Push
       uses: docker/build-push-action@v5
       with:
         context: .
         push: true
-        target: production
         tags: ${{ secrets.DOCKER_USERNAME }}/${{ github.event.repository.name }}:latest
 
     - name: Build and Deploy Docker Containers
